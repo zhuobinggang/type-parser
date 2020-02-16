@@ -19,8 +19,47 @@ const testCase = [
 
 ## Usage
 
-`const {parse, testCase} = require('./parse')`
+Please refer to the `runAndLog.js` something like below:
 
-then
+```js
+//runAndLog.js
 
-`testCase.map(parse).map(console.log)`
+const {parse, testCase} = require('./parse')
+
+testCase.map(parse).map((result) => {
+  console.log('+++')
+  console.log(result)
+})
+```
+
+Which will output something like:
+
+```text
++++
+{ type: 'Map',
+  typeArgs: [ { type: 'string' }, { type: 'Map', typeArgs: [Array] } ] }
++++
+{ type: 'Array',
+  typeArgs:
+   { type: 'Array',
+     typeArgs: { type: 'Array', typeArgs: [Object] } } }
++++
+{ type: 'Array',
+  typeArgs: { type: 'Array', typeArgs: { type: 'int' } } }
++++
+{ type: 'Array', typeArgs: { type: 'int' } }
++++
+{ type: 'bool' }
++++
+{ type: 'string' }
++++
+{ type: 'int' }
++++
+{ type: 'Map',
+  typeArgs:
+   [ { type: 'int' },
+     { type: 'bool' },
+     { type: 'int' },
+     { type: 'string' } ] }
+
+```
